@@ -112,9 +112,7 @@
     echo "<br/>";
     echo "El cliente " .$nombreCliente . " es " .$tipoCliente;
     echo "<br/>";
-    echo "El cliente ${nombreCliente} es ${tipoCliente}";
-    echo "<br/>";
-    
+ 
     //arrays
     $carrito = ['Tablet', 'Televisor', 'Computador'];
     //util para ver los contenidos de un array
@@ -264,4 +262,79 @@
     print_r($clientes);
     echo "</pre>";
 
+    //para recorrer un arreglo y un arreglo asociativo
+    $clientess = array('pedro', 'juan', 'karen');
+
+    foreach($clientess as $clientee) {
+        echo $clientee;
+        echo "<br/>";
+    }
+
+    $cliente = [
+        [
+            'nombre' => 'juan',
+            'saldo' => 200,
+            'tipo' => 'Premiun'
+
+        ]
+    ];
+
+    echo "<br/>";
+
+    foreach($cliente as $valor){
+        foreach($valor as $item) {
+            print_r($item);
+            echo "<br/>";
+        }
+    }
+
+    //array asociativo de objetos
+    $productos = [
+        [
+            'nombre' => 'Tablet',
+            'precio' => 200,
+            'disponible' =>  true
+        ],
+        [
+            'nombre' => 'Televisor 24',
+            'precio' => 300,
+            'disponible' =>  true
+        ],
+        [
+            'nombre' => 'Monitor Curvo',
+            'precio' => 400,
+            'disponible' =>  false
+        ]
+    ];
+
+    $total = 0.0;
+?>
+
+<br/>
+<table border>
+    <head>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>disponible</th>
+        </tr>
+    </head>
+    <tbody>
+        <?php foreach($productos as $producto) {?>
+            <tr>
+                <?php 
+                    $total += $producto['precio']; 
+                ?>
+                <td><?php echo $producto['nombre']; ?></td>
+                <td><?php echo $producto['precio']; ?></td>
+                <td><?php echo $producto['disponible'] ? 'Disponible' : 'No disponible'; ?></td>
+            </tr>
+        <?php };?>
+    </tbody>
+</table>
+<p>El total de la compra es: <?php echo $total; ?></p>
+
+<?php
+    require('funcionSuma.php');
+    sumar(10, []);
 ?>
